@@ -1,0 +1,9 @@
+{
+  "html.autoClosingTags": false,
+  "typescript.autoClosingTags": false,
+  "javascript.autoClosingTags": false,
+
+  "editor.autoClosingBrackets": "never",
+  "editor.formatOnSave": true,
+  "workbench.sideBar.location": "left"
+}
