@@ -1,7 +1,7 @@
 import React, { createContext } from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components/macro";
 
-import Config from "./config";
+import Config from "../system/config";
 
 import {
   NunitoLight,

@@ -47,9 +47,7 @@ const Button = styled.button`
     }
   }
 
-  ${color}
-  ${flexbox}
-  ${space}
+
 
   ${({ theme }) => theme.fontSize.regular}
 
@@ -86,7 +84,9 @@ const Button = styled.button`
       );
     `}
 
- 
+    ${color}
+    ${flexbox}
+    ${space}
 `;
 
 Button.propTypes = {

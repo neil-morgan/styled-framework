@@ -6,5 +6,17 @@ import Text from "./Text";
 import Button from "./Button";
 import Ripple from "./Ripple";
 import Box from "./Box";
-
-export { Section, Container, Col, Row, Text, Button, Ripple, Box };
+import Input from "./Input";
+import Select from "./Select";
+export {
+  Section,
+  Container,
+  Col,
+  Row,
+  Text,
+  Button,
+  Ripple,
+  Box,
+  Input,
+  Select,
+};

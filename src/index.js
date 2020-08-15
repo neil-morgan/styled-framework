@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import GlobalContext from "./system/get-global-context";
+import GlobalContext from "./contexts/global-context";
 
 import * as serviceWorker from "./serviceWorker";
 
