@@ -8,6 +8,9 @@ import Ripple from "./Ripple";
 import Box from "./Box";
 import Input from "./Input";
 import Select from "./Select";
+import Option from "./Option";
+import RadioGroup from "./RadioGroup";
+
 export {
   Section,
   Container,
@@ -19,4 +22,6 @@ export {
   Box,
   Input,
   Select,
+  Option,
+  RadioGroup,
 };
