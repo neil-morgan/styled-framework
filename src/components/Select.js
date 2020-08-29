@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
-import Option from "./Option";
 
-export default ({ name, label, placeholder, register, children }) => {
+export default ({ name, label, placeholder, options, register }) => {
   const [selectedOption, setSelectedOption] = useState(placeholder);
 
   return (
@@ -15,7 +14,11 @@ export default ({ name, label, placeholder, register, children }) => {
         ref={register}
       >
         {placeholder && <Option disabled>{placeholder}</Option>}
-        {children}
+        {options.map(([text, value], i) => (
+          <Option key={i} value={value}>
+            {text}
+          </Option>
+        ))}
       </Select>
     </Field>
   );
@@ -28,10 +31,8 @@ const Label = styled.label`
   color: #fff;
 `;
 
-const Select = styled.select`
-  background: #ffffff;
-  border: none;
-  ${({ theme }) => theme && theme.fontSize.regular}
-  height: 4rem;
-  padding: 0.5rem;
+const Select = styled.select``;
+
+const Option = styled.option`
+  color: #000000;
 `;

@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components/macro";
 import { color, space, flexbox } from "styled-system";
@@ -46,8 +45,6 @@ const Button = styled.button`
       opacity: 1;
     }
   }
-
-
 
   ${({ theme }) => theme.fontSize.regular}
 
