@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { Error } from "./";
 
-const RadioGroup = ({ name, label, options, register }) => {
+const RadioGroup = ({ name, label, options, register, errors }) => {
   return (
     <Field>
       <Label>{label}</Label>
@@ -11,6 +12,7 @@ const RadioGroup = ({ name, label, options, register }) => {
           {text}
         </label>
       ))}
+      {errors ? <Error error={errors.message} /> : undefined}
     </Field>
   );
 };

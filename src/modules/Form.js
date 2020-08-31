@@ -10,7 +10,7 @@ export default () => {
   const onSubmit = (data) => {
     setOutput(JSON.stringify(data));
   };
-  console.log(errors);
+
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -26,6 +26,7 @@ export default () => {
           register={register({
             required: "this is required",
           })}
+          errors={errors.select}
         />
 
         <Radio
@@ -39,6 +40,7 @@ export default () => {
           register={register({
             required: "this is required",
           })}
+          errors={errors.radio}
         />
 
         <Input
@@ -52,6 +54,7 @@ export default () => {
               message: "Max length is 80",
             },
           })}
+          errors={errors.input}
         />
 
         <Input
@@ -59,12 +62,13 @@ export default () => {
           label="Email"
           placeholder="example@email.com"
           register={register({
-            required: true,
+            required: "this is required",
             pattern: {
               value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
               message: "Invalid email address",
             },
           })}
+          errors={errors.email}
         />
 
         <Button secondary type="submit">

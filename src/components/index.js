@@ -9,6 +9,7 @@ import Box from "./Box";
 import Input from "./Input";
 import Select from "./Select";
 import Radio from "./Radio";
+import Error from "./Error";
 
 export {
   Section,
@@ -22,4 +23,5 @@ export {
   Input,
   Select,
   Radio,
+  Error,
 };
