@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
 import { useForm } from "react-hook-form";
-import { Select, Input, Radio, Button, Ripple } from "../components";
+import { Select, Input, Radio, Switch, Button, Ripple } from "../components";
 
 export default () => {
-  const { register, errors, handleSubmit } = useForm();
+  const { register, errors, handleSubmit } = useForm({
+    mode: "onBlur",
+  });
+
   const [output, setOutput] = useState(null);
 
   const onSubmit = (data) => {
@@ -41,6 +44,15 @@ export default () => {
             required: "this is required",
           })}
           errors={errors.radio}
+        />
+
+        <Switch
+          name="switch"
+          label="Switch"
+          register={register({
+            required: "this is required",
+          })}
+          errors={errors.switch}
         />
 
         <Input

@@ -9,6 +9,7 @@ import Box from "./Box";
 import Input from "./Input";
 import Select from "./Select";
 import Radio from "./Radio";
+import Switch from "./Switch";
 import Error from "./Error";
 
 export {
@@ -23,5 +24,6 @@ export {
   Input,
   Select,
   Radio,
+  Switch,
   Error,
 };

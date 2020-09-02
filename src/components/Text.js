@@ -66,6 +66,11 @@ const List = styled.ul`
   ${Regular}
 `;
 
+const Label = styled.label`
+  ${Root}
+  ${Regular}
+`;
+
 const Link = styled.a`
   font-weight: 600;
   color: ${({ theme }) => theme.colors.link};
@@ -124,6 +129,7 @@ export default {
   Strong,
   Small,
   List,
+  Label,
   Item,
   Rule,
 };

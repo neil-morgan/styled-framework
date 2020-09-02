@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { Error } from "./";
+import { Text, Error } from "./";
+
+const { Label } = Text;
 
 export default ({ name, label, placeholder, register, errors }) => {
   return (
@@ -14,9 +16,7 @@ export default ({ name, label, placeholder, register, errors }) => {
 const Field = styled.fieldset`
   display: flex;
 `;
-const Label = styled.label`
-  color: #fff;
-`;
+
 const Input = styled.input`
   width: 100%;
 `;
