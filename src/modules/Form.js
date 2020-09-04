@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
 import { useForm } from "react-hook-form";
-import { Select, Input, Radio, Switch, Button, Ripple } from "../components";
+import {
+  Label,
+  Select,
+  Input,
+  Radio,
+  Switch,
+  Button,
+  Ripple,
+} from "../components";
 
 export default () => {
   const { register, errors, handleSubmit } = useForm({

@@ -1,15 +1,13 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { Text, Error } from "./";
-
-const { Label } = Text;
+import { Fieldset, Label, Error } from "./";
 
 export default ({ name, label, options, register, errors }) => {
   return (
-    <Field>
+    <Fieldset>
       <Label>{label}</Label>
       {options.map(([text, value], i) => (
-        <Radio>
+        <Radio key={name + i}>
           <input
             type="radio"
             name={name}
@@ -21,18 +19,13 @@ export default ({ name, label, options, register, errors }) => {
         </Radio>
       ))}
       {errors ? <Error error={errors.message} /> : undefined}
-    </Field>
+    </Fieldset>
   );
 };
 
-const Field = styled.fieldset`
-  display: flex;
-  color: #ffffff;
-`;
-
 const Radio = styled.div`
   display: flex;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   &:last-child {
     margin-bottom: 0;
   }
@@ -40,11 +33,14 @@ const Radio = styled.div`
   label {
     display: flex;
     align-items: center;
+    color: #fff;
+    cursor: pointer;
+    ${({ theme }) => theme && theme.fontSize.regular}
     &:before {
       content: "";
-      background: #f4f4f4;
+      background: ${({ theme }) => theme.colors.grey};
       border-radius: 100%;
-      border: 1px solid darken(#f4f4f4, 25%);
+      border: 1px solid darken(${({ theme }) => theme.colors.grey}, 25%);
       display: inline-block;
       width: 2rem;
       height: 2rem;
@@ -66,8 +62,8 @@ const Radio = styled.div`
     &:checked {
       + label {
         &:before {
-          background-color: ${({ theme }) => theme.colors.primary};
-          box-shadow: inset 0 0 0 0.2rem #f4f4f4;
+          background-color: #fff;
+          box-shadow: inset 0 0 0 0.4rem ${({ theme }) => theme.colors.green};
         }
       }
     }
@@ -75,7 +71,7 @@ const Radio = styled.div`
       + label {
         &:before {
           outline: none;
-          border-color: ${({ theme }) => theme.colors.primary};
+          border-color: #fff;
         }
       }
     }

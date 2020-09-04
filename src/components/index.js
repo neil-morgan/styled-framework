@@ -6,6 +6,8 @@ import Text from "./Text";
 import Button from "./Button";
 import Ripple from "./Ripple";
 import Box from "./Box";
+import Fieldset from "./Fieldset";
+import Label from "./Label";
 import Input from "./Input";
 import Select from "./Select";
 import Radio from "./Radio";
@@ -21,6 +23,8 @@ export {
   Button,
   Ripple,
   Box,
+  Fieldset,
+  Label,
   Input,
   Select,
   Radio,

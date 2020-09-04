@@ -87,7 +87,9 @@ export default () => {
 
       <Section>
         <Container>
-          <Form />
+          <Col>
+            <Form />
+          </Col>
         </Container>
       </Section>
     </>

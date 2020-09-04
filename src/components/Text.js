@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components/macro";
 import { color, space, typography, flexbox, layout } from "styled-system";
-import { transparentize } from "polished";
 
 const Root = () => css`
   font-weight: 400;
@@ -66,11 +65,6 @@ const List = styled.ul`
   ${Regular}
 `;
 
-const Label = styled.label`
-  ${Root}
-  ${Regular}
-`;
-
 const Link = styled.a`
   font-weight: 600;
   color: ${({ theme }) => theme.colors.link};
@@ -129,7 +123,6 @@ export default {
   Strong,
   Small,
   List,
-  Label,
   Item,
   Rule,
 };

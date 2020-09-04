@@ -6,15 +6,18 @@ import { darken, lighten } from "polished";
 const Button = styled.button`
   position: relative;
   display: flex;
+  height: 4rem;
   justify-content: center;
+  align-items: center;
   cursor: pointer;
   text-decoration: none;
-  padding: 2em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
   margin: 1.5em 0;
   border-radius: 0.5rem;
   overflow: hidden;
   color: #fff;
-  padding: 1rem 3rem 0.9rem;
+
   letter-spacing: 0.1rem;
   line-height: 1;
   font-weight: normal;
