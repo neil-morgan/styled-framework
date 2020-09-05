@@ -4,7 +4,7 @@ import getGridItem from "../system/get-grid-item";
 
 const Col = styled.div`
   display: flex;
-  flex: 0 0 auto; 
+  flex: 0 0 auto;
   flex-direction: column;
   position: relative;
   min-height: 1px;

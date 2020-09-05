@@ -11,13 +11,12 @@ const Button = styled.button`
   align-items: center;
   cursor: pointer;
   text-decoration: none;
-  padding-left: 1.5em;
-  padding-right: 1.5em;
+  padding-left: 2rem;
+  padding-right: 2rem;
   margin: 1.5em 0;
   border-radius: 0.5rem;
   overflow: hidden;
   color: #fff;
-
   letter-spacing: 0.1rem;
   line-height: 1;
   font-weight: normal;

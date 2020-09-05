@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components/macro";
 import { useForm } from "react-hook-form";
 import {
-  Label,
+  Form,
   Select,
   Input,
   Radio,
@@ -24,7 +24,7 @@ export default () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <Form width="32rem" mx="auto" onSubmit={handleSubmit(onSubmit)}>
         <Select
           name="select"
           label="Select"
@@ -35,7 +35,7 @@ export default () => {
             ["C", "3"],
           ]}
           register={register({
-            required: "this is required",
+            required: "This is required",
           })}
           errors={errors.select}
         />
@@ -49,7 +49,7 @@ export default () => {
             ["C", "3"],
           ]}
           register={register({
-            required: "this is required",
+            required: "This is required",
           })}
           errors={errors.radio}
         />
@@ -58,7 +58,7 @@ export default () => {
           name="switch"
           label="Switch"
           register={register({
-            required: "this is required",
+            required: "This is required",
           })}
           errors={errors.switch}
         />
@@ -68,7 +68,7 @@ export default () => {
           label="Input"
           placeholder="Input"
           register={register({
-            required: "this is required",
+            required: "This is required",
             maxLength: {
               value: 80,
               message: "Max length is 80",
@@ -82,7 +82,7 @@ export default () => {
           label="Email"
           placeholder="example@email.com"
           register={register({
-            required: "this is required",
+            required: "This is required",
             pattern: {
               value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
               message: "Invalid email address",
@@ -95,7 +95,7 @@ export default () => {
           Submit
           <Ripple />
         </Button>
-      </form>
+      </Form>
       <Json>
         SUBMIT RESULT:
         <pre>

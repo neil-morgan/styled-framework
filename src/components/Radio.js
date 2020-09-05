@@ -5,7 +5,11 @@ import { Fieldset, Label, Error } from "./";
 export default ({ name, label, options, register, errors }) => {
   return (
     <Fieldset>
-      <Label>{label}</Label>
+      {label && (
+        <Label>
+          {label} {errors && <Error.Message error={errors.message} />}
+        </Label>
+      )}
       {options.map(([text, value], i) => (
         <Radio key={name + i}>
           <input
@@ -18,7 +22,6 @@ export default ({ name, label, options, register, errors }) => {
           <label htmlFor={name + i}>{text}</label>
         </Radio>
       ))}
-      {errors ? <Error error={errors.message} /> : undefined}
     </Fieldset>
   );
 };
