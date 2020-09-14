@@ -148,7 +148,8 @@ const GlobalStyle = createGlobalStyle`
   button,
   textarea,
   input,
-  select {
+  select,
+  label {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-tap-highlight-color: transparent;
     -webkit-user-select: none;

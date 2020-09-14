@@ -4,7 +4,7 @@ import { layout, space, color } from "styled-system";
 const Form = styled.form`
   ${color}
   ${space}
-${layout}
+  ${layout}
 `;
 
 export default Form;

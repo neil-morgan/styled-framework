@@ -1,34 +1,24 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { Fieldset, Label, Error } from "./";
+import Util from "../system/util";
 
-export default ({ name, label, options, register, errors }) => {
+const { generateKey } = Util();
+
+export default ({ name, register, children }) => {
+  const key = generateKey(name);
   return (
-    <Fieldset>
-      {label && (
-        <Label>
-          {label} {errors && <Error.Message error={errors.message} />}
-        </Label>
-      )}
-      {options.map(([text, value], i) => (
-        <Radio key={name + i}>
-          <input
-            type="radio"
-            name={name}
-            value={value}
-            id={name + i}
-            ref={register}
-          />
-          <label htmlFor={name + i}>{text}</label>
-        </Radio>
-      ))}
-    </Fieldset>
+    <Radio key={name}>
+      <input name={name} id={key} ref={register} type="radio" />
+      <label htmlFor={key}>{children}</label>
+    </Radio>
   );
 };
 
 const Radio = styled.div`
   display: flex;
-  margin-bottom: 0.5rem;
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -49,11 +39,11 @@ const Radio = styled.div`
       height: 2rem;
       position: relative;
       top: 0;
-      margin-right: 1em;
+      margin-right: 1rem;
       vertical-align: top;
       cursor: pointer;
       text-align: center;
-      transition: all 250ms ease;
+      transition: 200ms;
     }
   }
 

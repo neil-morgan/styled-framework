@@ -63,6 +63,10 @@ const slice = (obj, s, e) =>
       return result;
     }, {});
 
+const generateKey = (pre) => {
+  return `${pre}_${new Date().getTime()}`;
+};
+
 export default function () {
   return {
     isValidDate,
@@ -72,6 +76,7 @@ export default function () {
     delEmptyObjectKeys,
     getObjectLength,
     arrayToObject,
+    generateKey,
     iterate,
     slice,
   };

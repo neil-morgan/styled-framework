@@ -1,10 +1,12 @@
 import styled from "styled-components/macro";
+import { flexbox } from "styled-system";
 
-const Fieldset = styled.fieldset`
+const FieldSet = styled.div`
   position: relative;
   display: flex;
-  margin-bottom: 2rem;
-  border: 0;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  ${flexbox}
 `;
 
-export default Fieldset;
+export default FieldSet;

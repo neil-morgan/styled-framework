@@ -7,7 +7,9 @@ import Button from "./Button";
 import Ripple from "./Ripple";
 import Box from "./Box";
 import Form from "./Form";
-import Fieldset from "./Fieldset";
+import FieldSet from "./FieldSet";
+import FieldGroup from "./FieldGroup";
+import Legend from "./Legend";
 import Label from "./Label";
 import Input from "./Input";
 import Select from "./Select";
@@ -25,7 +27,9 @@ export {
   Ripple,
   Box,
   Form,
-  Fieldset,
+  FieldSet,
+  FieldGroup,
+  Legend,
   Label,
   Input,
   Select,

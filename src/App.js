@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 import { ThemeContext } from "styled-components";
 import { darken, lighten } from "polished";
 
-import Form from "./modules/Form";
-
 import {
   Section,
   Container,
@@ -13,6 +11,8 @@ import {
   Button,
   Ripple,
 } from "./components";
+
+import Form from "./modules/Form";
 
 const {
   MainHeading,
@@ -88,6 +88,7 @@ export default () => {
       <Section>
         <Container>
           <Col>
+            <MainHeading>Form elements</MainHeading>
             <Form />
           </Col>
         </Container>

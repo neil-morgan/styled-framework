@@ -9,6 +9,10 @@ import {
   Switch,
   Button,
   Ripple,
+  Legend,
+  Label,
+  FieldGroup,
+  FieldSet,
 } from "../components";
 
 export default () => {
@@ -24,44 +28,84 @@ export default () => {
 
   return (
     <>
-      <Form width="32rem" mx="auto" onSubmit={handleSubmit(onSubmit)}>
-        <Select
-          name="select"
-          label="Select"
-          placeholder="Please select"
-          options={[
-            ["A", "1"],
-            ["B", "2"],
-            ["C", "3"],
-          ]}
-          register={register({
-            required: "This is required",
-          })}
-          errors={errors.select}
-        />
-
-        <Radio
-          name="radio"
-          label="Radio"
-          options={[
-            ["A", "1"],
-            ["B", "2"],
-            ["C", "3"],
-          ]}
-          register={register({
-            required: "This is required",
-          })}
-          errors={errors.radio}
-        />
-
-        <Switch
-          name="switch"
-          label="Switch"
-          register={register({
-            required: "This is required",
-          })}
-          errors={errors.switch}
-        />
+      <Form width="100%" mx="auto" onSubmit={handleSubmit(onSubmit)}>
+        <Legend>Selects</Legend>
+        <FieldSet flexDirection="row">
+          <Select
+            name="select"
+            label="Select"
+            placeholder="Please select"
+            options={[
+              ["A", "1"],
+              ["B", "2"],
+              ["C", "3"],
+            ]}
+            register={register({
+              required: "This is required",
+            })}
+            errors={errors.select}
+          >
+            asdasd
+          </Select>
+          <Select
+            name="select"
+            label="Select"
+            placeholder="Please select"
+            options={[
+              ["A", "1"],
+              ["B", "2"],
+              ["C", "3"],
+            ]}
+            register={register({
+              required: "This is required",
+            })}
+            errors={errors.select}
+          >
+            asdasd
+          </Select>
+        </FieldSet>
+        <Legend>Radios</Legend>
+        <FieldSet flexDirection="column">
+          <Radio
+            name="radio"
+            register={register({
+              required: "This is required",
+            })}
+            errors={errors.radio}
+          >
+            Radio 1
+          </Radio>
+          <Radio
+            name="radio"
+            register={register({
+              required: "This is required",
+            })}
+            errors={errors.radio}
+          >
+            Radio 2
+          </Radio>
+        </FieldSet>
+        <Legend>Switches</Legend>
+        <FieldSet flexDirection="column">
+          <Switch
+            name="switch1"
+            register={register({
+              required: "This is required",
+            })}
+            errors={errors.switch2}
+          >
+            Switch 1
+          </Switch>
+          <Switch
+            name="switch2"
+            register={register({
+              required: "This is required",
+            })}
+            errors={errors.switch2}
+          >
+            Switch 2
+          </Switch>
+        </FieldSet>
 
         <Input
           name="input"

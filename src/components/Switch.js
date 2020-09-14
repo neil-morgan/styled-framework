@@ -1,42 +1,45 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import { Fieldset, Label, Error } from "./";
-
-export default ({ name, label, register, errors }) => {
+export default ({ name, children, register }) => {
   return (
-    <Fieldset>
-      {label && (
-        <Label>
-          {label} {errors && <Error.Message error={errors.message} />}
-        </Label>
-      )}
-      <Switch>
-        <input name={name} id={name} type="checkbox" ref={register} />
-        <label htmlFor={name}>
-          <span />
-        </label>
-      </Switch>
-    </Fieldset>
+    <Switch>
+      <input name={name} id={name} type="checkbox" ref={register} />
+      <label htmlFor={name}>
+        <span />
+      </label>
+      <label htmlFor={name}>{children}</label>
+    </Switch>
   );
 };
 
 const Switch = styled.div`
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  ${({ theme }) => theme && theme.fontSize.regular}
+  color: #fff;
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
-    ${(errors) => console.log(errors)}
-    width: 4rem;
-    height: 2rem;
-    background: ${({ theme }) => theme.colors.grey};
-    border-radius: 100px;
-    position: relative;
-    transition: background-color 0.2s;
+    &:first-of-type {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      width: 4rem;
+      height: 2rem;
+      margin-right: 1rem;
+      background: ${({ theme }) => theme.colors.grey};
+      border-radius: 100px;
+      position: relative;
+      transition: background-color 200ms;
+    }
   }
 
   span {
