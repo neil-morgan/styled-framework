@@ -63,8 +63,15 @@ const slice = (obj, s, e) =>
       return result;
     }, {});
 
-const generateKey = (pre) => {
-  return `${pre}_${new Date().getTime()}`;
+const makeid = (length) => {
+  var result = "";
+  var characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
 };
 
 export default function () {
@@ -76,8 +83,8 @@ export default function () {
     delEmptyObjectKeys,
     getObjectLength,
     arrayToObject,
-    generateKey,
     iterate,
+    makeid,
     slice,
   };
 }

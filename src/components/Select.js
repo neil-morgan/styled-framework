@@ -71,7 +71,6 @@ const DropDown = styled.div`
 
   select {
     cursor: pointer;
-
     display: flex;
     position: relative;
     width: 130%;
@@ -96,7 +95,6 @@ const DropDown = styled.div`
 
     option {
       cursor: pointer;
-
       padding-left: 1.5em;
       padding-right: 1.5em;
       background: #fff;

@@ -87,7 +87,7 @@ export default () => {
 
       <Section>
         <Container>
-          <Col>
+          <Col xs={12} md={6}>
             <MainHeading>Form elements</MainHeading>
             <Form />
           </Col>

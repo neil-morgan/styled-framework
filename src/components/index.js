@@ -14,6 +14,7 @@ import Label from "./Label";
 import Input from "./Input";
 import Select from "./Select";
 import Radio from "./Radio";
+import Checkbox from "./Checkbox";
 import Switch from "./Switch";
 import Error from "./Error";
 
@@ -34,6 +35,7 @@ export {
   Input,
   Select,
   Radio,
+  Checkbox,
   Switch,
   Error,
 };

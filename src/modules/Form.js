@@ -6,6 +6,7 @@ import {
   Select,
   Input,
   Radio,
+  Checkbox,
   Switch,
   Button,
   Ripple,
@@ -33,7 +34,6 @@ export default () => {
         <FieldSet flexDirection="row">
           <Select
             name="select"
-            label="Select"
             placeholder="Please select"
             options={[
               ["A", "1"],
@@ -45,11 +45,10 @@ export default () => {
             })}
             errors={errors.select}
           >
-            asdasd
+            Select 1
           </Select>
           <Select
             name="select"
-            label="Select"
             placeholder="Please select"
             options={[
               ["A", "1"],
@@ -61,7 +60,7 @@ export default () => {
             })}
             errors={errors.select}
           >
-            asdasd
+            Select 2
           </Select>
         </FieldSet>
         <Legend>Radios</Legend>
@@ -85,6 +84,27 @@ export default () => {
             Radio 2
           </Radio>
         </FieldSet>
+        <Legend>Checkboxes</Legend>
+        <FieldSet flexDirection="column">
+          <Checkbox
+            name="check1"
+            register={register({
+              required: "This is required",
+            })}
+            errors={errors.check}
+          >
+            Checkbox 1
+          </Checkbox>
+          <Checkbox
+            name="check2"
+            register={register({
+              required: "This is required",
+            })}
+            errors={errors.check}
+          >
+            Checkbox 2
+          </Checkbox>
+        </FieldSet>
         <Legend>Switches</Legend>
         <FieldSet flexDirection="column">
           <Switch
@@ -106,34 +126,38 @@ export default () => {
             Switch 2
           </Switch>
         </FieldSet>
+        <FieldSet>
+          <Input
+            name="input"
+            placeholder="Input"
+            register={register({
+              required: "This is required",
+              maxLength: {
+                value: 80,
+                message: "Max length is 80",
+              },
+            })}
+            errors={errors.input}
+          >
+            Input
+          </Input>
 
-        <Input
-          name="input"
-          label="Input"
-          placeholder="Input"
-          register={register({
-            required: "This is required",
-            maxLength: {
-              value: 80,
-              message: "Max length is 80",
-            },
-          })}
-          errors={errors.input}
-        />
-
-        <Input
-          name="email"
-          label="Email"
-          placeholder="example@email.com"
-          register={register({
-            required: "This is required",
-            pattern: {
-              value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-              message: "Invalid email address",
-            },
-          })}
-          errors={errors.email}
-        />
+          <Input
+            name="email"
+            label="Email"
+            placeholder="example@email.com"
+            register={register({
+              required: "This is required",
+              pattern: {
+                value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                message: "Invalid email address",
+              },
+            })}
+            errors={errors.email}
+          >
+            Email
+          </Input>
+        </FieldSet>
 
         <Button secondary type="submit">
           Submit

@@ -2,12 +2,13 @@ import React from "react";
 import styled from "styled-components/macro";
 import Util from "../system/util";
 
-const { generateKey } = Util();
+const { makeid } = Util();
 
 export default ({ name, register, children }) => {
-  const key = generateKey(name);
+  const key = makeid(5);
+
   return (
-    <Radio key={name}>
+    <Radio>
       <input name={name} id={key} ref={register} type="radio" />
       <label htmlFor={key}>{children}</label>
     </Radio>
@@ -47,10 +48,17 @@ const Radio = styled.div`
     }
   }
 
-  input[type="radio"] {
-    display: none;
+  input {
+    border: 0;
+    clip: rect(0 0 0 0);
+    clippath: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
     position: absolute;
-    opacity: 0;
+    white-space: nowrap;
+    width: 1px;
 
     &:checked {
       + label {
