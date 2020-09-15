@@ -1,5 +1,12 @@
 import styled, { css } from "styled-components/macro";
-import { color, space, typography, flexbox, layout } from "styled-system";
+import {
+  color,
+  space,
+  typography,
+  flexbox,
+  layout,
+  border,
+} from "styled-system";
 
 const Root = () => css`
   font-weight: 400;
@@ -9,6 +16,7 @@ const Root = () => css`
   ${typography}
   ${flexbox}
   ${layout}
+  ${border}
 `;
 
 const MainHeading = styled.h1`
@@ -41,6 +49,22 @@ const Regular = () => css`
 const Small = styled.small`
   ${({ theme }) => theme && theme.fontSize.small}
   display: inline-flex;
+  ${Root}
+`;
+
+const Legend = styled.legend`
+  ${({ theme }) => theme && theme.fontSize.subHeading}
+  font-family: "Roboto";
+  flex-basis: 100%;
+  position: relative;
+  margin-bottom: 0.75em;
+  ${Root}
+`;
+
+const Label = styled.label`
+  ${({ theme }) => theme && theme.fontSize.regular}
+  display: inline-flex;
+  margin-bottom: 1rem;
   ${Root}
 `;
 
@@ -90,9 +114,9 @@ const Rule = styled.hr`
   height: 1px;
   background: ${({ theme }) => theme.colors.text};
   border: none;
+  height: 0.1rem;
   margin-top: 4rem;
   margin-bottom: 4rem;
-  height: 0.1rem;
   ${Root}
 `;
 
@@ -115,6 +139,8 @@ export default {
   MainHeading,
   Heading,
   SubHeading,
+  Legend,
+  Label,
   Paragraph,
   Span,
   Link,

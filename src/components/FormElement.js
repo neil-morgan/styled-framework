@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { Label } from "./";
+import { Text } from "./";
 
 export default ({ children, label, error }) => {
   return (
     <FormElement>
-      {label && <Label>{label}</Label>}
+      {label && <Text.Label>{label}</Text.Label>}
       <Input>{children}</Input>
       {error}
     </FormElement>

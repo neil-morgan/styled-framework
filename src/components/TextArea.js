@@ -16,7 +16,7 @@ export default ({ name, label, children, placeholder, register }) => {
   );
 };
 
-const Input = styled.input`
+const Input = styled.textarea`
   ${({ theme }) => theme && theme.fontSize.regular}
   position: relative;
   width: 100%;
@@ -26,6 +26,7 @@ const Input = styled.input`
   padding-bottom: 1rem;
   padding-left: 2rem;
   padding-right: 2rem;
+  resize: none;
 
   &::placeholder {
     opacity: 1;

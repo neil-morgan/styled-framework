@@ -36,8 +36,7 @@ export default () => {
     <>
       <Section>
         <Container>
-          <Col xs={12}>
-            <Rule mt={0} width="25%" />
+          <Col xs={12} md={6}>
             <MainHeading>Main Heading</MainHeading>
             <Heading>Heading</Heading>
             <SubHeading>Subheading</SubHeading>
@@ -67,6 +66,7 @@ export default () => {
                 </List>
               </List>
             </List>
+            <Rule width="100%" />
             <Row>
               <Button bg={lighten(0.1, colors.violet)} mb={0}>
                 Lighter

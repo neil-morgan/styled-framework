@@ -20,37 +20,13 @@ export default ({ name, label, children, placeholder, options, register }) => {
   );
 };
 
-const Select = styled.select`
-  ${({ theme }) => theme && theme.fontSize.regular};
-  cursor: pointer;
-  display: flex;
-  position: relative;
-  width: 130%;
-  height: 100%;
-  margin: 0;
-  padding-left: 2rem;
-  padding-right: 5rem;
-  color: #000;
-  background: #f2f2f2;
-  background: rgba(0, 0, 0, 0) !important;
-  border: 0;
-  border-radius: 0;
-  outline: none;
-  appearance: none;
-
-  &:focus {
-    z-index: 3;
-    width: 100%;
-    color: #394349;
-  }
-`;
-
 const DropDown = styled.div`
   display: flex;
   flex: 1;
   position: relative;
   overflow: hidden;
-  height: 4rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   background: #f2f2f2;
   border-radius: 0.5rem;
 
@@ -81,6 +57,31 @@ const DropDown = styled.div`
     margin-top: 7px;
     border-top-style: solid;
     border-bottom: none;
+  }
+`;
+
+const Select = styled.select`
+  ${({ theme }) => theme && theme.fontSize.regular};
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  width: 130%;
+  height: 100%;
+  margin: 0;
+  padding-left: 2rem;
+  padding-right: 5rem;
+  color: #000;
+  background: #f2f2f2;
+  background: rgba(0, 0, 0, 0) !important;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  appearance: none;
+
+  &:focus {
+    z-index: 3;
+    width: 100%;
+    color: #394349;
   }
 `;
 

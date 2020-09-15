@@ -10,9 +10,8 @@ import Form from "./Form";
 import FormElement from "./FormElement";
 import FieldSet from "./FieldSet";
 import FieldGroup from "./FieldGroup";
-import Legend from "./Legend";
-import Label from "./Label";
 import Input from "./Input";
+import TextArea from "./TextArea";
 import Select from "./Select";
 import Radio from "./Radio";
 import Checkbox from "./Checkbox";
@@ -32,9 +31,8 @@ export {
   FormElement,
   FieldSet,
   FieldGroup,
-  Legend,
-  Label,
   Input,
+  TextArea,
   Select,
   Radio,
   Checkbox,
