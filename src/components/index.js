@@ -7,6 +7,7 @@ import Button from "./Button";
 import Ripple from "./Ripple";
 import Box from "./Box";
 import Form from "./Form";
+import FormElement from "./FormElement";
 import FieldSet from "./FieldSet";
 import FieldGroup from "./FieldGroup";
 import Legend from "./Legend";
@@ -28,6 +29,7 @@ export {
   Ripple,
   Box,
   Form,
+  FormElement,
   FieldSet,
   FieldGroup,
   Legend,

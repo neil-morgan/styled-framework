@@ -1,41 +1,18 @@
 import React from "react";
-import styled, { keyframes, css } from "styled-components/macro";
-import { Text } from "./";
+import styled from "styled-components/macro";
 
-const Message = ({ error }) => {
-  return <Error>{error}</Error>;
+export default ({ children }) => {
+  return <Error>{children}</Error>;
 };
 
-const frames = keyframes`
-  0% {
-    opacity: 0;
-    transform: translateX(1rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`;
-
-const Error = styled(Text.Small)`
+const Error = styled.div`
+  ${({ theme }) => theme && theme.fontSize.small}
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex: 0 0 100%;
+  min-width: 11rem;
+  margin-top: 0.5rem;
   color: red;
-  animation: ${frames} 500ms forwards;
-  margin-left: 2rem;
+  transition: 200ms;
 `;
-
-const Highlight = styled.span`
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 1rem;
-  background: red;
-  border-top-right-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
-  animation: ${frames} 500ms forwards;
-`;
-
-export default {
-  Message,
-  Highlight,
-};

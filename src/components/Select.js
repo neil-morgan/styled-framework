@@ -1,33 +1,47 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { Label } from "./";
+import { FormElement } from "./";
 
-export default ({ name, children, placeholder, options, register, errors }) => {
+export default ({ name, label, children, placeholder, options, register }) => {
   return (
-    <Select>
-      {children && <Label>{children}</Label>}
+    <FormElement label={label} error={children}>
       <DropDown>
-        <select name={name} defaultValue={""} ref={register}>
-          {placeholder && <option value="">{placeholder}</option>}
+        <Select name={name} defaultValue={""} ref={register}>
+          {placeholder && <Option value="">{placeholder}</Option>}
+
           {options.map(([text, value], i) => (
-            <option key={i} value={value}>
+            <Option key={i} value={value}>
               {text}
-            </option>
+            </Option>
           ))}
-        </select>
+        </Select>
       </DropDown>
-    </Select>
+    </FormElement>
   );
 };
 
-const Select = styled.div`
+const Select = styled.select`
+  ${({ theme }) => theme && theme.fontSize.regular};
+  cursor: pointer;
   display: flex;
-  flex-direction: column;
-  margin-bottom: 2rem;
-  margin-right: 2rem;
+  position: relative;
+  width: 130%;
+  height: 100%;
+  margin: 0;
+  padding-left: 2rem;
+  padding-right: 5rem;
+  color: #000;
+  background: #f2f2f2;
+  background: rgba(0, 0, 0, 0) !important;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  appearance: none;
 
-  &:last-child {
-    margin-bottom: 0;
+  &:focus {
+    z-index: 3;
+    width: 100%;
+    color: #394349;
   }
 `;
 
@@ -68,37 +82,12 @@ const DropDown = styled.div`
     border-top-style: solid;
     border-bottom: none;
   }
+`;
 
-  select {
-    cursor: pointer;
-    display: flex;
-    position: relative;
-    width: 130%;
-    height: 100%;
-    margin: 0;
-    padding-left: 2rem;
-    padding-right: 5rem;
-    ${({ theme }) => theme && theme.fontSize.regular};
-    color: #000;
-    background: #f2f2f2;
-    background: rgba(0, 0, 0, 0) !important;
-    border: 0;
-    border-radius: 0;
-    outline: none;
-    appearance: none;
-
-    &:focus {
-      z-index: 3;
-      width: 100%;
-      color: #394349;
-    }
-
-    option {
-      cursor: pointer;
-      padding-left: 1.5em;
-      padding-right: 1.5em;
-      background: #fff;
-      border-radius: 0.5rem;
-    }
-  }
+const Option = styled.option`
+  cursor: pointer;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  background: #fff;
+  border-radius: 0.5rem;
 `;

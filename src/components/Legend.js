@@ -5,7 +5,7 @@ const Legend = styled.legend`
   position:relative;
   color: #fff;
   margin-bottom: 2rem;
-  border-bottom: solid 0.2rem #fff;
+  border-bottom: solid 0.2rem rgba(255, 255, 255, 0.25);
 `;
 
 export default Legend;

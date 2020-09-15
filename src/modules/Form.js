@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
 import { useForm } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
 import {
   Form,
   Select,
@@ -13,12 +14,13 @@ import {
   Legend,
   Label,
   FieldGroup,
+  Error,
   FieldSet,
 } from "../components";
 
 export default () => {
   const { register, errors, handleSubmit } = useForm({
-    mode: "onBlur",
+    mode: "onChange",
   });
 
   const [output, setOutput] = useState(null);
@@ -33,7 +35,8 @@ export default () => {
         <Legend>Selects</Legend>
         <FieldSet flexDirection="row">
           <Select
-            name="select"
+            name="select1"
+            label={"Select 1"}
             placeholder="Please select"
             options={[
               ["A", "1"],
@@ -43,12 +46,17 @@ export default () => {
             register={register({
               required: "This is required",
             })}
-            errors={errors.select}
           >
-            Select 1
+            <ErrorMessage
+              as={Error}
+              errors={errors}
+              name="select1"
+              message="This is required"
+            />
           </Select>
           <Select
-            name="select"
+            name="select2"
+            label={"Select 2"}
             placeholder="Please select"
             options={[
               ["A", "1"],
@@ -58,77 +66,117 @@ export default () => {
             register={register({
               required: "This is required",
             })}
-            errors={errors.select}
           >
-            Select 2
+            <ErrorMessage
+              as={Error}
+              errors={errors}
+              name="select2"
+              message="This is required"
+            />
           </Select>
         </FieldSet>
+
         <Legend>Radios</Legend>
-        <FieldSet flexDirection="column">
+        <FieldSet flexDirection="row">
           <Radio
             name="radio"
+            label={"Radio 1"}
             register={register({
-              required: "This is required",
+              required: true,
             })}
-            errors={errors.radio}
           >
-            Radio 1
+            <ErrorMessage
+              as={Error}
+              errors={errors}
+              name="radio"
+              message="This is required"
+            />
           </Radio>
           <Radio
             name="radio"
+            label={"Radio 2"}
             register={register({
-              required: "This is required",
+              required: true,
             })}
-            errors={errors.radio}
           >
-            Radio 2
+            <ErrorMessage
+              as={Error}
+              errors={errors}
+              name="radio"
+              message="This is required"
+            />
           </Radio>
         </FieldSet>
+
         <Legend>Checkboxes</Legend>
         <FieldSet flexDirection="column">
           <Checkbox
             name="check1"
+            label="Checkbox 1"
             register={register({
-              required: "This is required",
+              required: true,
             })}
-            errors={errors.check}
           >
-            Checkbox 1
+            <ErrorMessage
+              as={Error}
+              errors={errors}
+              name="check1"
+              message="This is required"
+            />
           </Checkbox>
           <Checkbox
             name="check2"
+            label="Checkbox 2"
             register={register({
-              required: "This is required",
+              required: true,
             })}
-            errors={errors.check}
           >
-            Checkbox 2
+            <ErrorMessage
+              as={Error}
+              errors={errors}
+              name="check2"
+              message="This is required"
+            />
           </Checkbox>
         </FieldSet>
+
         <Legend>Switches</Legend>
-        <FieldSet flexDirection="column">
+        <FieldSet flexDirection="row">
           <Switch
             name="switch1"
+            label="Switch 1"
             register={register({
               required: "This is required",
             })}
-            errors={errors.switch2}
           >
-            Switch 1
+            <ErrorMessage
+              as={Error}
+              errors={errors}
+              name="switch1"
+              message="This is required"
+            />
           </Switch>
           <Switch
             name="switch2"
+            label="Switch 2"
             register={register({
               required: "This is required",
             })}
-            errors={errors.switch2}
           >
-            Switch 2
+            <ErrorMessage
+              as={Error}
+              errors={errors}
+              name="switch2"
+              message="This is required"
+            />
           </Switch>
         </FieldSet>
+
+        <Legend>Inputs</Legend>
         <FieldSet>
           <Input
             name="input"
+            label={"Input"}
             placeholder="Input"
             register={register({
               required: "This is required",
@@ -137,11 +185,16 @@ export default () => {
                 message: "Max length is 80",
               },
             })}
-            errors={errors.input}
           >
-            Input
+            <ErrorMessage name="input" as={Error} errors={errors}>
+              {({ messages }) =>
+                messages &&
+                Object.entries(messages).map(([type, message]) => (
+                  <React.Fragment key={type}>{message}</React.Fragment>
+                ))
+              }
+            </ErrorMessage>
           </Input>
-
           <Input
             name="email"
             label="Email"
@@ -153,9 +206,15 @@ export default () => {
                 message: "Invalid email address",
               },
             })}
-            errors={errors.email}
           >
-            Email
+            <ErrorMessage name="email" as={Error} errors={errors}>
+              {({ messages }) =>
+                messages &&
+                Object.entries(messages).map(([type, message]) => (
+                  <React.Fragment key={type}>{message}</React.Fragment>
+                ))
+              }
+            </ErrorMessage>
           </Input>
         </FieldSet>
 
