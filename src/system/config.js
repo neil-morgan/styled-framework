@@ -1,3 +1,4 @@
+import { darken, lighten } from "polished";
 import getFluidFont from "./get-fluid-font";
 
 const DIMENSION_NAMES = ["xs", "sm", "md", "lg", "xl"];
@@ -35,14 +36,7 @@ const HIERARCHY = {
   },
 };
 
-const COLORS = {
-  primary: "#806CE9",
-  secondary: "#4C94EB",
-  tertiary: "#7F9C38",
-  text: "#FFFFFF",
-  link: "#2196f3",
-  foreground: "#2F3238",
-  background: "#212327",
+const PALETTE = {
   red: "#f44336",
   pink: "#e91e63",
   purple: "#9c27b0",
@@ -63,6 +57,20 @@ const COLORS = {
   grey: "#9e9e9e",
   steel: "#607d8b",
   light: "#f7f7f7",
+  dark: "#2a2a2a",
+};
+
+const COLORS = {
+  primary: PALETTE.violet,
+  secondary: PALETTE.azure,
+  tertiary: PALETTE.tea,
+  text: PALETTE.dark,
+  link: PALETTE.blue,
+  error: darken(0.1, PALETTE.red),
+  foreground: darken(0.2, PALETTE.light),
+  background: PALETTE.light,
+  inputBackground: lighten(0.2, PALETTE.grey),
+  inputFocus: lighten(0.15, PALETTE.grey),
 };
 
 const DEBUG_MODE = {
@@ -92,5 +100,6 @@ export default function () {
     grid: GRID,
     fontSize: getFluidFont(HIERARCHY, BREAKPOINTS),
     colors: COLORS,
+    palette: PALETTE,
   };
 }

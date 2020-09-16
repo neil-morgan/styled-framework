@@ -234,7 +234,7 @@ export default () => {
                 message: "Max length is 80",
               },
             })}
-            width="100%"
+     
           >
             <ErrorMessage name="textarea" as={Error} errors={errors}>
               {({ messages }) =>

@@ -35,6 +35,7 @@ export default ({ children }) => {
           grid: Config().grid,
           fontSize: Config().fontSize,
           colors: Config().colors,
+          palette: Config().palette,
         }}
       >
         <GlobalStyle />
@@ -142,7 +143,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     overflow-x: hidden;
     overflow-y: scroll;
-    background: #000000;
+    background:  ${({ theme }) => theme.colors.background};
   }
 
   button,

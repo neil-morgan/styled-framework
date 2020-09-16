@@ -7,12 +7,12 @@ export default ({ children }) => {
 
 const Error = styled.div`
   ${({ theme }) => theme && theme.fontSize.small}
+  color:  ${({ theme }) => theme && theme.colors.error};
   display: flex;
   align-items: center;
   flex-direction: row;
-  flex: 0 0 100%;
-  min-width: 11rem;
+  flex-basis: 100%;
   margin-top: 0.5rem;
-  color: red;
+
   transition: 200ms;
 `;

@@ -13,6 +13,7 @@ import {
 } from "./components";
 
 import Form from "./modules/Form";
+import Test from "./modules/Test";
 
 const {
   MainHeading,
@@ -68,15 +69,15 @@ export default () => {
             </List>
             <Rule width="100%" />
             <Row>
-              <Button bg={lighten(0.1, colors.violet)} mb={0}>
+              <Button bg={lighten(0.1, colors.primary)} mb={0}>
                 Lighter
                 <Ripple />
               </Button>
-              <Button bg="violet" mb={0} mx={"1em"}>
+              <Button bg={colors.primary} mb={0} mx={"1em"}>
                 Normal
                 <Ripple />
               </Button>
-              <Button bg={darken(0.1, colors.violet)} mb={0}>
+              <Button bg={darken(0.1, colors.primary)} mb={0}>
                 Darker
                 <Ripple />
               </Button>
@@ -87,10 +88,7 @@ export default () => {
 
       <Section>
         <Container>
-          <Col xs={12} md={6}>
-            <MainHeading>Form elements</MainHeading>
-            <Form />
-          </Col>
+          <Test />
         </Container>
       </Section>
     </>
