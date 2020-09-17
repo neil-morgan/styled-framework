@@ -171,7 +171,7 @@ const Tag = styled.div`
   margin-bottom: 0.5rem;
   margin-right: 0.5rem;
   padding-left: 1rem;
-  padding-right: 0.5rem;
+  padding-right: 1rem;
   transition: 200ms;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
@@ -198,7 +198,7 @@ const Remove = styled.div`
   position: relative;
   height: 1.6rem;
   width: 1.6rem;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
   background: ${({ theme }) => theme.colors.error};
   border-radius: 0.5rem;
 
