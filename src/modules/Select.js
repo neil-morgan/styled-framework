@@ -26,7 +26,6 @@ const DropDown = styled.div`
   height: 4rem;
   border-radius: 0.5rem;
 
-  &::before,
   &::after {
     content: "";
     position: absolute;
@@ -35,14 +34,11 @@ const DropDown = styled.div`
     right: 2rem;
     width: 0;
     height: 0;
-    border: 0.4rem dashed;
+    border: 0.6rem dashed;
     border-color: #000 transparent;
     pointer-events: none;
   }
-  &::before {
-    border-bottom-style: solid;
-    border-top: none;
-  }
+
   &::after {
     margin-top: 7px;
     border-top-style: solid;

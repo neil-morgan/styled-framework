@@ -30,7 +30,11 @@ const Input = styled.label`
   margin-right: 1rem;
   border-radius: 100px;
   position: relative;
-  transition: background-color 200ms;
+  transition: 200ms;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.inputFocus};
+  }
 
   &:before {
     content: "";

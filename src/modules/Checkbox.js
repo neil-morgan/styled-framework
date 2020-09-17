@@ -29,6 +29,10 @@ const Input = styled.label`
   border-radius: 0.5rem;
   transition: 200ms;
   margin-right: 1rem;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.inputFocus};
+  }
 `;
 
 const Graphic = styled.svg`

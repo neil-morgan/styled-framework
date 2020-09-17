@@ -62,7 +62,7 @@ const PALETTE = {
 
 const COLORS = {
   primary: PALETTE.violet,
-  secondary: PALETTE.azure,
+  secondary: darken(0.2, PALETTE.azure),
   tertiary: PALETTE.tea,
   text: PALETTE.dark,
   link: PALETTE.blue,

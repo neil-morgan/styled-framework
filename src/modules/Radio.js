@@ -26,6 +26,10 @@ const Input = styled.label`
   display: flex;
   height: 100%;
   width: 100%;
+  transition: 200ms;
+  &:hover {
+    background: ${({ theme }) => theme.colors.inputFocus};
+  }
 
   &:before {
     box-shadow: inset 0 0 0 1rem ${({ theme }) => theme.colors.primary};

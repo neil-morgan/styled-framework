@@ -11,8 +11,24 @@ import Switch from "./Switch";
 import FormElement from "./FormElement";
 import FormGroup from "./FormGroup";
 import Select from "./Select";
+import Dropdown from "./TestSelect";
 
 const { MainHeading, SubHeading } = Text;
+
+const items = [
+  {
+    id: 1,
+    value: "Pulp Fiction",
+  },
+  {
+    id: 2,
+    value: "The Prestige",
+  },
+  {
+    id: 3,
+    value: "Blade Runner 2049",
+  },
+];
 
 export default () => {
   const { register, errors, handleSubmit } = useForm({
@@ -189,49 +205,15 @@ export default () => {
               <FormGroup>
                 <SubHeading>Select</SubHeading>
                 <FormElement>
-                  <Label htmlFor="select" mb="1rem">
-                    Select 1
-                  </Label>
-                  <Select
-                    name="select1"
-                    placeholder="Please select"
-                    options={[
-                      ["A", "1"],
-                      ["B", "2"],
-                      ["C", "3"],
-                    ]}
+                  <Label mb="1rem">Favourite movies</Label>
+                  <Dropdown
+                    name="dd"
+                    placeholder="Options"
+                    items={items}
                     register={register({
                       required: true,
                     })}
-                  />
-                  <ErrorMessage
-                    as={Error}
-                    errors={errors}
-                    name="select1"
-                    message="This is required"
-                  />
-                </FormElement>
-                <FormElement>
-                  <Label htmlFor="select" m="2rem 0 1rem">
-                    Select 1
-                  </Label>
-                  <Select
-                    name="select2"
-                    placeholder="Please select"
-                    options={[
-                      ["A", "1"],
-                      ["B", "2"],
-                      ["C", "3"],
-                    ]}
-                    register={register({
-                      required: true,
-                    })}
-                  />
-                  <ErrorMessage
-                    as={Error}
-                    errors={errors}
-                    name="select2"
-                    message="This is required"
+                    multiSelect
                   />
                 </FormElement>
               </FormGroup>

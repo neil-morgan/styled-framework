@@ -24,7 +24,7 @@ const Input = styled.input`
   width: 100%;
   border: 0;
   border-radius: 0.5rem;
-  height: 4rem;
+  height: 4.5rem;
   padding-left: 2rem;
   padding-right: 2rem;
   transition: 200ms;
@@ -34,6 +34,7 @@ const Input = styled.input`
     opacity: 1;
   }
 
+  &:hover,
   &:focus {
     background: ${({ theme }) => theme.colors.inputFocus};
   }
