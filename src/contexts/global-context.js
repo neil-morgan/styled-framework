@@ -119,9 +119,7 @@ const GlobalStyle = createGlobalStyle`
     font-style: italic;
   }
 
-  *,
-  ::after,
-  ::before {
+  * {
     font-family: "Nunito", Helvetica, Arial, sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-text-size-adjust: 100%;

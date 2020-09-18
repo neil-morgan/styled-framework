@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import { darken, lighten } from "polished";
-import styled from "styled-components/macro";
-import { Text } from "../components";
+import { transparentize, darken, lighten } from "polished";
+import styled, { css } from "styled-components/macro";
+import HoverScroll from "./HoverScroll";
 
 const items = [
   {
@@ -38,11 +38,10 @@ const items = [
   },
 ];
 
-function Dropdown({ name, placeholder, register, multiSelect = false }) {
+export default ({ name, placeholder, register, multiSelect = false }) => {
   const [open, setOpen] = useState(false);
   const [selection, setSelection] = useState([]);
 
-  const toggle = () => setOpen(!open);
   const node = useRef();
 
   const handleItemClick = (item) => {
@@ -73,18 +72,20 @@ function Dropdown({ name, placeholder, register, multiSelect = false }) {
     setOpen(false);
   };
 
-  const handleRemoveTag = (id) => {
+  const handleCrossTag = (id) => {
     if (multiSelect) {
       setSelection(selection.filter((item) => item.id !== id));
     }
   };
 
-  function isItemInSelection(item) {
+  const isItemInSelection = (item) => {
     if (selection.some((current) => current.id === item.id)) {
       return true;
     }
     return false;
-  }
+  };
+
+  const toggle = () => setOpen(!open);
 
   useEffect(() => {
     if (open) {
@@ -99,47 +100,7 @@ function Dropdown({ name, placeholder, register, multiSelect = false }) {
   }, [open]);
 
   return (
-    <Select ref={node}>
-      <Header
-        tabIndex={0}
-        role="button"
-        onKeyPress={() => toggle(!open)}
-        onClick={(e) => handleOpenClick(e)}
-      >
-        <Selected>
-          {selection.length !== 0 &&
-            selection.map((item, i) => (
-              <Tag
-                key={i}
-                id={item.id}
-                onClick={() => handleRemoveTag(item.id)}
-              >
-                {`${item.value}`}
-                <Remove />
-              </Tag>
-            ))}
-
-          {/* {placeholder} */}
-
-          <Action onClick={() => toggle(!open)}>
-            Select
-            {/* {open ? "Close" : "Open"} */}
-          </Action>
-        </Selected>
-      </Header>
-
-      {open && (
-        <List>
-          {items.map((item) => (
-            <Item key={item.id}>
-              <ItemButton onClick={() => handleItemClick(item)} type="button">
-                <span>{item.value}</span>
-                <ItemStatus>{isItemInSelection(item) && "Selected"}</ItemStatus>
-              </ItemButton>
-            </Item>
-          ))}
-        </List>
-      )}
+    <Wrapper ref={node}>
       <HiddenInput
         name={name}
         value="test"
@@ -147,15 +108,147 @@ function Dropdown({ name, placeholder, register, multiSelect = false }) {
         ref={register}
         type="input"
       />
-    </Select>
-  );
-}
+      <Header
+        tabIndex={0}
+        role="button"
+        onKeyPress={() => toggle(!open)}
+        onClick={(e) => handleOpenClick(e)}
+        isOpen={open}
+      >
+        <Selected>
+          {0 !== selection.length ? (
+            multiSelect ? (
+              selection.map((item, i) => (
+                <Tag
+                  key={i}
+                  id={item.id}
+                  onClick={() => handleCrossTag(item.id)}
+                >
+                  {`${item.value}`}
+                  <TagCross />
+                </Tag>
+              ))
+            ) : (
+              <Tag id={selection[0].id} onClick={() => setSelection([])}>
+                {selection[0].value}
+                <TagCross />
+              </Tag>
+            )
+          ) : (
+            <Placeholder onClick={() => toggle(!open)}>
+              {placeholder ? placeholder : open ? "Please select" : "Open"}
+            </Placeholder>
+          )}
+        </Selected>
+      </Header>
 
-const Select = styled.div`
+      {/* {open && ( */}
+      <RelativeRoot>
+        <AbsoluteRoot isOpen={open}>
+          <HoverScroll>
+            <List>
+              {items.map((item) => (
+                <Item key={item.id}>
+                  <ItemButton
+                    onClick={() => handleItemClick(item)}
+                    type="button"
+                  >
+                    <span>{item.value}</span>
+                    {isItemInSelection(item) && (
+                      <ItemStatus> Selected</ItemStatus>
+                    )}
+                  </ItemButton>
+                </Item>
+              ))}
+            </List>
+          </HoverScroll>
+        </AbsoluteRoot>
+      </RelativeRoot>
+      {/* )} */}
+    </Wrapper>
+  );
+};
+
+const NoHighlight = () => css`
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+`;
+
+const RelativeRoot = styled.div`
+  position: relative;
+`;
+
+const AbsoluteRoot = styled.div`
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+  overflow: hidden;
+  visibility: hidden;
+  ${({ isOpen }) => isOpen && `visibility: visible; `}
+
+  & > div > div {
+    max-height: 18rem;
+    transition: 200ms;
+    transform: translateY(-100%);
+    background: ${({ theme }) => lighten(0.15, theme.colors.inputBackground)};
+    border: solid 0.2rem ${({ theme }) => theme.colors.inputBackground};
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    ${({ isOpen }) => isOpen && ` transform: translateY(0);`}
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+`;
+
+const Wrapper = styled.div`
   position: relative;
   display: flex;
+  flex-direction: column;
   width: 100%;
   flex-wrap: wrap;
+`;
+
+const Header = styled.div`
+  ${({ theme }) => theme && theme.fontSize.regular};
+  background: ${({ theme }) => theme.colors.inputBackground};
+  ${({ isOpen }) =>
+    isOpen
+      ? "border-top-left-radius:0.5rem; border-top-right-radius:0.5rem;"
+      : "border-radius:0.5rem;"}
+  overflow-x: visible;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  outline: none;
+  border: 0;
+  overflow: hidden;
+  min-height: 4.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  transition: 200ms;
+  &:hover {
+    background: ${({ theme }) => theme.colors.inputFocus};
+  }
+  ${NoHighlight}
+`;
+
+const Selected = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const Placeholder = styled.span`
+  ${NoHighlight}
 `;
 
 const Tag = styled.div`
@@ -173,35 +266,19 @@ const Tag = styled.div`
   padding-left: 1rem;
   padding-right: 1rem;
   transition: 200ms;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-tap-highlight-color: transparent;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  outline: none;
-
+  ${NoHighlight}
   &:hover {
     background: ${({ theme }) => theme && darken(0.1, theme.colors.primary)};
   }
 `;
 
-const Action = styled(Tag)`
-  background: ${({ theme }) => theme.colors.secondary};
-  &:hover {
-    background: ${({ theme }) => theme && darken(0.1, theme.colors.secondary)};
-  }
-`;
-
-const Remove = styled.div`
+const TagCross = styled.div`
   position: relative;
   height: 1.6rem;
   width: 1.6rem;
   margin-left: 1rem;
   background: ${({ theme }) => theme.colors.error};
   border-radius: 0.5rem;
-
   &:before,
   &:after {
     position: absolute;
@@ -220,18 +297,13 @@ const Remove = styled.div`
   }
 `;
 
-const List = styled.ul`
-  position: absolute;
-  z-index: 100;
-  bottom: 0;
-  left: 0;
-  transform: translateY(100%);
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  max-height: 16rem;
-  overflow-y: scroll;
+const List = styled.ul``;
+
+const Item = styled.li`
+  list-style-type: none;
+  &:nth-child(even) {
+    background: ${({ theme }) => lighten(0.1, theme.colors.inputBackground)};
+  }
 `;
 
 const ItemButton = styled.button`
@@ -239,29 +311,16 @@ const ItemButton = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background-color: transparent;
   min-height: 4rem;
   padding-left: 2rem;
   padding-right: 2rem;
   border: 0;
-  border-bottom: 1px solid #ccc;
   width: 100%;
   text-align: left;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-
   &:hover,
   &:focus {
     cursor: pointer;
-    background: ${({ theme }) => lighten(0.075, theme.colors.inputBackground)};
-  }
-`;
-
-const Item = styled.li`
-  list-style-type: none;
-  &:last-of-type > ${ItemButton} {
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
   }
 `;
 
@@ -269,36 +328,6 @@ const ItemName = styled.span``;
 
 const ItemStatus = styled.span`
   color: ${({ theme }) => theme.colors.primary};
-`;
-
-const Header = styled.div`
-  ${({ theme }) => theme && theme.fontSize.regular};
-  background: ${({ theme }) => theme.colors.inputBackground};
-  overflow-x: visible;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  width: 100%;
-  outline: none;
-  border: 0;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  min-height: 4.5rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 1rem;
-  padding-bottom: 0.5rem;
-
-  transition: 200ms;
-
-  &:hover {
-    background: ${({ theme }) => theme.colors.inputFocus};
-  }
-`;
-
-const Selected = styled.div`
-  display: flex;
-  flex-wrap: wrap;
 `;
 
 const HiddenInput = styled.input`
@@ -314,6 +343,5 @@ const HiddenInput = styled.input`
   padding: 0;
   white-space: nowrap;
   width: 1px;
+  ${NoHighlight}
 `;
-
-export default Dropdown;

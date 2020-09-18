@@ -10,10 +10,9 @@ import Label from "./Label";
 import Switch from "./Switch";
 import FormElement from "./FormElement";
 import FormGroup from "./FormGroup";
-import Select from "./Select";
 import Dropdown from "./TestSelect";
 
-const { MainHeading, SubHeading } = Text;
+const { List, Item, MainHeading, SubHeading } = Text;
 
 const items = [
   {
@@ -37,7 +36,6 @@ export default () => {
 
   const [output, setOutput] = useState(null);
 
-  console.log(errors);
   const onSubmit = (data) => {
     setOutput(JSON.stringify(data));
   };
@@ -201,24 +199,41 @@ export default () => {
                   />
                 </FormElement>
               </FormGroup>
-
-              <FormGroup>
-                <SubHeading>Select</SubHeading>
-                <FormElement>
-                  <Label mb="1rem">Favourite movies</Label>
-                  <Dropdown
-                    name="dd"
-                    placeholder="Options"
-                    items={items}
-                    register={register({
-                      required: true,
-                    })}
-                    multiSelect
-                  />
-                </FormElement>
-              </FormGroup>
             </Col>
           </Row>
+          <Col xs={12}>
+            <FormGroup>
+              <SubHeading>Select</SubHeading>
+              <List>
+                <Item>Needs dropdown icons</Item>
+                <Item>Needs hover effect for items</Item>
+                <Item>Needs better item selected effect</Item>
+                <Item>Needs mobile/platform test</Item>
+              </List>
+              <FormElement>
+                <Label mb="1rem">Single select</Label>
+                <Dropdown
+                  name="dd"
+                  placeholder="Please select"
+                  items={items}
+                  register={register({
+                    required: true,
+                  })}
+                />
+              </FormElement>
+              <FormElement>
+                <Label m="2rem 0 1rem">Multi select</Label>
+                <Dropdown
+                  name="dd"
+                  items={items}
+                  register={register({
+                    required: true,
+                  })}
+                  multiSelect
+                />
+              </FormElement>
+            </FormGroup>
+          </Col>
           <Col>
             <Button secondary alignSelf="center" type="submit">
               Submit
